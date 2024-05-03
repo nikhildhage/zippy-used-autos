@@ -11,7 +11,7 @@
 </head>
 
 <body class="flex flex-col justify-center items-center bg-slate-100 h-screen">
-    <header class="w-full bg-black text-white px-10 py-10">
-        <h5 class="font-bold text-center text-nowrap text-5xl">Zippy's Used Autos</h5>
+    <header class="w-full bg-black text-white p-12">
+        <h5 class="font-bold text-center text-nowrap text-center text-4xl">Zippy's Used Autos</h5>
     </header>
     <div id="app-container" class="container w-full flex flex-col  bg-slate-100 mx-4 my-4 px-4 py-4">
