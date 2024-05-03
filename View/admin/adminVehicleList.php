@@ -57,6 +57,7 @@ include("../header.php");
                     <th class="px-2 py-2">Type</th>
                     <th class="px-2 py-2">Class</th>
                     <th class="px-2 py-2">Make</th>
+                    <th class="px-2 py-2">Action</th>
                 </tr>
             </thead>
             <tbody class="bg-orange-300">
