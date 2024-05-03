@@ -4,7 +4,7 @@ include("../header.php");
 <main>
 
 
-    <p class=" font-bold text-orange-400 text-xl text-left text-nowrap my-4">Vehicle Class List</p>
+    <p class=" font-bold text-orange-400 text-xl text-left text-nowrap my-4">Vehicle Make List</p>
 
     <!-- Responsive table -->
     <section id="customer-vehicle-table" class=" text-nowrap overflow-auto scrollbar-thumb-gray-400 scrollbar-track-gray-300">
@@ -18,9 +18,9 @@ include("../header.php");
             <tbody class="bg-orange-300">
                 <!-- Sample data, replace with actual data -->
                 <?php
-                foreach ($classes as $class) { ?>
+                foreach ($makes as $make) { ?>
                     <tr>
-                        <td class=" px-4 py-2 border border-slate-600"><?php echo $class["class"] ?></td>
+                        <td class=" px-4 py-2 border border-slate-600"><?php echo $make["make"] ?></td>
                         <td class=" px-4 py-2 border border-slate-600">
                             <form action="." method="POST">
                                 <button name="action" class="bg-red-500 rounded-lg drop-shadow-lg mt-3 mb-3 py-1 px-3" type="submit">Remove</button>
@@ -33,7 +33,7 @@ include("../header.php");
     </section>
 </main>
 
-<p class=" font-bold text-orange-400 text-xl text-left text-nowrap my-4">Add Vehicle Classes </p>
+<p class=" font-bold text-orange-400 text-xl text-left text-nowrap my-4">Add Vehicle Makes </p>
 <form action="">
     <input type="text" name="add_vehicle" placeholder="" class="block w-48 mb-3 mt-2 py-1 px-3 border border-gray-300 bg-white rounded shadow focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
     <button class="bg-blue-300 rounded-lg drop-shadow-lg mt-3 mb-3 py-1 px-3" type="submit">Submit</button>
