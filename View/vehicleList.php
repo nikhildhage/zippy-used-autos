@@ -47,7 +47,7 @@ include("./View/header.php");
     </section>
 
     <!-- Responsive table -->
-    <section id="customer-vehicle-table" class=" text-nowrap text-center text-xl overflow-auto scrollbar-thumb-gray-400 scrollbar-track-gray-300">
+    <section id="customer-vehicle-table" class=" text-nowrap text-center overflow-auto scrollbar-thumb-gray-400 scrollbar-track-gray-300">
         <table class="table-auto w-full border-collapse border border-slate-600">
             <thead>
                 <tr class="bg-slate-800  text-white">
