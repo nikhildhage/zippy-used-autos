@@ -11,6 +11,15 @@ switch ($action) {
         $types = get_types();
         include('./adminVehicleTypeList.php');
         break;
+    case "list_classes":
+        $classes = get_classes();
+        include('./adminVehicleClassList.php');
+        break;
+    case "list_makes":
+        $makes = get_makes();
+        include('./adminVehicleMakeList.php');
+        break;
+
     default:
         $vehicles = get_vehicles();
         include('./adminVehicleList.php');
