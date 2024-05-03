@@ -17,8 +17,9 @@ This project is for the Backend Web Development 1 course. Zippy is a client with
 
 ```
 Localhost Url
-- http://localhost/zippy-used-autos/index.php
+-[index.php](http://localhost/zippy-used-autos/index.php)
+
 
 Admin Page Url
-- http://localhost/zippy-used-autos/View/admin/admin_controller.php
+-[admin_controller.php](http://localhost/zippy-used-autos/View/admin/admin_controller.php)
 ```
