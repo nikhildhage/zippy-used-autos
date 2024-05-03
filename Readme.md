@@ -27,8 +27,8 @@
 
 ### Index Controller
 
-```Index controller : index.php -> View/vehicleList.php. Index.php is a controller that sends user to default public page vehicleList.php. ` ` `
+`Index controller : index.php -> View/vehicleList.php. Index.php is a controller that sends user to default public page vehicleList.php.`
 
 ### Admin Controller
 
-```Admin controller : View/admin/admin_controller.php -> View/admin/adminVehicleList.php. admin_controller.php is a controller that sends user to     zippy's admin page adminVehicleList.php. Then adminVehicleLIst.php will have links to other admin pages. ` ` `
+`Admin controller : View/admin/admin_controller.php -> View/admin/adminVehicleList.php. admin_controller.php is a controller that sends user to     zippy's admin page adminVehicleList.php. Then adminVehicleLIst.php will have links to other admin pages.`
