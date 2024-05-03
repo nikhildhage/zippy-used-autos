@@ -9,3 +9,15 @@ function get_types()
     $statement->closeCursor();
     return $results;
 }
+
+function get_typename($type_id)
+{
+}
+
+function delete_type()
+{
+}
+
+function add_type()
+{
+}
