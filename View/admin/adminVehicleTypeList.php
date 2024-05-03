@@ -40,10 +40,11 @@ include("../header.php");
 </form>
 
 <footer>
-    <!-- Link to View/Edit Courses Page -->
-    <p></p><a href="?action=list_classes"> Click Here to view Vehicle Class List></a></p>
+    <p><a class=" text-blue-500 underline" href="">view Full Vehicle List</a></p>
+    <!-- Link to View/Edit Admin Vehicle Class Page -->
+    <p><a href="?action=list_classes"> Click Here to view Vehicle Class List></a></p>
 
-    <!-- Link to View/Edit Courses Page -->
+    <!-- Link to View/Edit Admin Vehicle Make Page -->
     </p><a href="?action=list_makes">Click Here to view Vehicle Make List</a></p>
 </footer>
 <?php
