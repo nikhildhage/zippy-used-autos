@@ -85,13 +85,13 @@ include("../header.php");
 
 <footer>
     <!-- Link to View/Edit Courses Page -->
-    <p><a href="?action=list_types">Click Here to view Vehicle Type List</a></p>
+    <p><a class=" text-blue-500 underline" href="?action=list_types">Click Here to view Vehicle Type List</a></p>
 
     <!-- Link to View/Edit Courses Page -->
-    <p><a href="?action=list_classes">Click Here to view Vehicle Class List</a></p>
+    <p><a class=" text-blue-500 underline" href="?action=list_classes">Click Here to view Vehicle Class List</a></p>
 
     <!-- Link to View/Edit Courses Page -->
-    <p><a href="?action=list_makes">Click Here to view Vehicle Make List</a></p>
+    <p><a class=" text-blue-500 underline" href="?action=list_makes">Click Here to view Vehicle Make List</a></p>
 </footer>
 
 <?php
