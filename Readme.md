@@ -15,11 +15,10 @@ This project is for the Backend Web Development 1 course. Zippy is a client with
 
 ## APP Routes/Urls
 
-```
-Localhost Url
--[index.php](http://localhost/zippy-used-autos/index.php)
+# Localhost Url
 
+[index.php](http://localhost/zippy-used-autos/index.php)
 
-Admin Page Url
--[admin_controller.php](http://localhost/zippy-used-autos/View/admin/admin_controller.php)
-```
+# Admin Page Url
+
+[admin_controller.php](http://localhost/zippy-used-autos/View/admin/admin_controller.php)
