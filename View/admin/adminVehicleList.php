@@ -2,7 +2,7 @@
 include("../header.php");
 ?>
 <main>
-    <section id="dropdown-group" class="flex flex-col text-nowrap text-xl">
+    <section id="dropdown-group" class="flex flex-col text-nowrap text-lg">
         <!-- Form with select type dropdown -->
         <form action="index.php" method="POST" class="flex flex-row space-x-3 ">
             <label for="selectType" class="block mb-3 mt-2">Select Type</label>
@@ -34,7 +34,7 @@ include("../header.php");
         </form>
     </section>
 
-    <section id="sort-by-form" class="flex flex-row justify-center items-center text-nowrap text-xl">
+    <section id="sort-by-form" class="flex flex-row justify-center items-center text-nowrap text-lg">
         <!-- Form with radio buttons  -->
         <form action="index.php" method="POST" class="flex justify-center items-center space-x-3 mb-4 ">
             <label>Sort bY:</label>
@@ -65,15 +65,15 @@ include("../header.php");
                 <?php
                 foreach ($vehicles as $vehicle) { ?>
                     <tr>
-                        <td class="px-4 py-2 border border-slate-600"><?php echo $vehicle["year"] ?></td>
-                        <td class=" px-4 py-2 border border border-slate-600"><?php echo $vehicle["model"] ?></td>
-                        <td class="px-4 py-2 border border-slate-600"><?php echo $vehicle["price"] ?></td>
-                        <td class=" px-4 py-2 border border-slate-600"><?php echo $vehicle["type"] ?></td>
-                        <td class=" px-4 py-2 border border-slate-600"><?php echo $vehicle["class"] ?></td>
-                        <td class=" px-4 py-2 border border-slate-600"><?php echo $vehicle["make"] ?></td>
-                        <td class=" px-4 py-2 border border-slate-600">
-                            <form action="." method="POST">
-                                <button name="action" class="bg-red-500 rounded-lg drop-shadow-lg mt-3 mb-3 py-1 px-3" type="submit">Remove</button>
+                        <td class="border border-slate-600"><?php echo $vehicle["year"] ?></td>
+                        <td class="border border border-slate-600"><?php echo $vehicle["model"] ?></td>
+                        <td class="border border-slate-600"><?php echo $vehicle["price"] ?></td>
+                        <td class="border border-slate-600"><?php echo $vehicle["type"] ?></td>
+                        <td class="  border border-slate-600"><?php echo $vehicle["class"] ?></td>
+                        <td class="border border-slate-600"><?php echo $vehicle["make"] ?></td>
+                        <td class=" border border-slate-600">
+                            <form action="." method="POST" class="hidden-form">
+                                <button name="removeButton" class=" bg-red-500 rounded-lg drop-shadow-lg mt-3 mb-3 py-1 px-3" type="submit">Remove</button>
                             </form>
                         </td>
                     <tr>
