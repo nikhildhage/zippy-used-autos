@@ -63,6 +63,12 @@ function get_vehicles_by_make($make_id)
 
 function delete_vehicle($id)
 {
+    global $db;
+    $query = "DELETE FROM vehicles WHERE id = :id";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':id', $id);
+    $statement->execute();
+    $statement->closeCursor();
 }
 
 
