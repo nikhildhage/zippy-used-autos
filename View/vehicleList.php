@@ -1,6 +1,11 @@
 <?php
 include("./View/header.php");
+
+$makes = get_makes();
+$types = get_types();
+$classes = get_classes();
 ?>
+
 <main>
     <section id="dropdown-group" class="flex flex-col text-nowrap text-xl">
         <!-- Form for sorting -->
@@ -14,26 +19,34 @@ include("./View/header.php");
         </form>
 
         <!-- Form for filtering by Make, Type, and Class -->
+        <!-- Ensure that the current sorting order is passed along with the filter request -->
         <form action="index.php" method="GET" class="flex flex-row space-x-3 mb-4">
+            <input type="hidden" name="sort_order" value="<?= $sort_order ?>">
             <div>
                 <label for="selectMake" class="block mb-2">Select Make:</label>
                 <select id="selectMake" name="make_id" class="block w-40 mb-3 py-1 px-3 border border-gray-300 bg-white rounded shadow focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                     <option value="">All Makes</option>
-                    <!-- Populate this with data from database -->
+                    <?php foreach ($makes as $make) : ?>
+                        <option value="<?= $make['id'] ?>"><?= htmlspecialchars($make['make']) ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div>
                 <label for="selectType" class="block mb-2">Select Type:</label>
                 <select id="selectType" name="type_id" class="block w-40 mb-3 py-1 px-3 border border-gray-300 bg-white rounded shadow focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                     <option value="">All Types</option>
-                    <!-- Populate this with data from database -->
+                    <?php foreach ($types as $type) : ?>
+                        <option value="<?= $type['id'] ?>"><?= htmlspecialchars($type['type']) ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div>
                 <label for="selectClass" class="block mb-2">Select Class:</label>
                 <select id="selectClass" name="class_id" class="block w-40 mb-3 py-1 px-3 border border-gray-300 bg-white rounded shadow focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
                     <option value="">All Classes</option>
-                    <!-- Populate this with data from database -->
+                    <?php foreach ($classes as $class) : ?>
+                        <option value="<?= $class['id'] ?>"><?= htmlspecialchars($class['class']) ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <button class="bg-blue-300 rounded-lg drop-shadow-lg mt-3 py-1 px-3" type="submit">Filter</button>
