@@ -24,7 +24,12 @@ function get_className($class_id)
 
 function delete_class($class_id)
 {
-    
+    global $db;
+    $query = "DELETE FROM class WHERE id = :class_id";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':class_id', $class_id);
+    $statement->execute();
+    $statement->closeCursor();
 }
 
 function add_class()
