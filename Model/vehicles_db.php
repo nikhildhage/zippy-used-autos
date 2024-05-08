@@ -49,6 +49,16 @@ function get_vehicles_by_class($class_id)
 //Get a lst of vehicles that with a specific make 
 function get_vehicles_by_make($make_id)
 {
+    global $db;
+    $query = "SELECT v.year, v.model, v.price, t.type, c.class, m.make FROM vehicles v
+              LEFT JOIN make m ON v.make_id = m.id
+              WHERE m.id = :make_id";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':make_id', $make_id);
+    $statement->execute();
+    $results = $statement->fetchAll();
+    $statement->closeCursor();
+    return $results;
 }
 
 function delete_vehicle($id)
