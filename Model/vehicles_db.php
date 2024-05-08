@@ -34,6 +34,16 @@ function get_vehicles_by_type($type_id)
 //Get a lst of vehicles that with a specific class 
 function get_vehicles_by_class($class_id)
 {
+    global $db;
+    $query = "SELECT v.year, v.model, v.price, t.type, c.class, m.make FROM vehicles v
+              LEFT JOIN class c ON v.class_id = c.id
+              WHERE c.id = :class_id";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':class_id', $class_id);
+    $statement->execute();
+    $results = $statement->fetchAll();
+    $statement->closeCursor();
+    return $results;
 }
 
 //Get a lst of vehicles that with a specific make 
