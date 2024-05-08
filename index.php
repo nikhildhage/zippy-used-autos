@@ -14,8 +14,19 @@ $class_id = filter_input(INPUT_POST, 'class_id', FILTER_VALIDATE_INT);
 
 $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING) ?: filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING) ?: 'list_assignments';
 switch ($action) {
+    case "list_vehicles":
     default:
-        $vehicles = get_vehicles();
-        include('./View/vehicleList.php');
-        // No break needed after default as it's the last case
+        $sort_order = $sort_order ?: 'price_desc'; // default sorting order by price descending
+        if ($make_id) {
+            $vehicles = get_vehicles_by_make($make_id, $sort_order);
+        } elseif ($type_id) {
+            $vehicles = get_vehicles_by_type($type_id, $sort_order);
+        } elseif ($class_id) {
+            $vehicles = get_vehicles_by_class($class_id, $sort_order);
+        } else {
+            $vehicles = get_vehicles($sort_order); // Get all vehicles with sorting
+        }
+        include('view/vehicleList.php');
+        break;
+    
 }
