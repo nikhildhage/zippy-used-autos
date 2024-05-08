@@ -1,14 +1,16 @@
 <?php
 
 // Get a list of ALL Vehicles 
-function get_vehicles()
+function get_vehicles($sort_order)
 {
     // Fetch all items from the database to display
     global $db;
+    $orderBy = $sort_order == 'year_desc' ? 'v.year DESC' : 'v.price DESC';
     $query = "SELECT v.year, v.model, v.price, t.type, c.class, m.make from vehicles v
                 LEFT JOIN type t ON v.type_id = t.id  
                 LEFT JOIN class c ON v.class_id = c.id 
-                LEFT JOIN make m  ON v.make_id = m.id";
+                LEFT JOIN make m  ON v.make_id = m.id
+                ORDER BY $orderBy";
     $statement = $db->prepare($query);
     $statement->execute();
     $results = $statement->fetchAll();
@@ -17,12 +19,14 @@ function get_vehicles()
 }
 
 //Get a lst of vehicles that with a specific type 
-function get_vehicles_by_type($type_id)
+function get_vehicles_by_type($type_id, $sort_order)
 {
     global $db;
+    $orderBy = $sort_order == 'year_desc' ? 'v.year DESC' : 'v.price DESC';
     $query = "SELECT v.year, v.model, v.price, t.type, c.class, m.make FROM vehicles v
               LEFT JOIN type t ON v.type_id = t.id
-              WHERE t.id = :type_id";
+              WHERE t.id = :type_id
+              ORDER BY $orderBy";
     $statement = $db->prepare($query);
     $statement->bindValue(':type_id', $type_id);
     $statement->execute();
@@ -32,12 +36,14 @@ function get_vehicles_by_type($type_id)
 }
 
 //Get a lst of vehicles that with a specific class 
-function get_vehicles_by_class($class_id)
+function get_vehicles_by_class($class_id, $sort_order)
 {
     global $db;
+    $orderBy = $sort_order == 'year_desc' ? 'v.year DESC' : 'v.price DESC';
     $query = "SELECT v.year, v.model, v.price, t.type, c.class, m.make FROM vehicles v
               LEFT JOIN class c ON v.class_id = c.id
-              WHERE c.id = :class_id";
+              WHERE c.id = :class_id
+              ORDER BY $orderBy";
     $statement = $db->prepare($query);
     $statement->bindValue(':class_id', $class_id);
     $statement->execute();
@@ -47,12 +53,14 @@ function get_vehicles_by_class($class_id)
 }
 
 //Get a lst of vehicles that with a specific make 
-function get_vehicles_by_make($make_id)
+function get_vehicles_by_make($make_id, $sort_order)
 {
     global $db;
+    $orderBy = $sort_order == 'year_desc' ? 'v.year DESC' : 'v.price DESC';
     $query = "SELECT v.year, v.model, v.price, t.type, c.class, m.make FROM vehicles v
               LEFT JOIN make m ON v.make_id = m.id
-              WHERE m.id = :make_id";
+              WHERE m.id = :make_id
+              ORDER BY $orderBy";
     $statement = $db->prepare($query);
     $statement->bindValue(':make_id', $make_id);
     $statement->execute();
