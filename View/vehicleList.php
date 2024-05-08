@@ -61,17 +61,22 @@ include("./View/header.php");
             </thead>
             <tbody class="bg-orange-300">
                 <!-- Sample data, replace with actual data -->
-                <?php
-                foreach ($vehicles as $vehicle) { ?>
+                <?php if (!empty($items)) : ?>
+                    <?php foreach ($vehicles as $vehicle) : ?>
+                        <tr>
+                            <td class="px-4 py-2 border border-slate-600"><?php echo $vehicle["year"] ?></td>
+                            <td class=" px-4 py-2 border border border-slate-600"><?php echo $vehicle["model"] ?></td>
+                            <td class="px-4 py-2 border border-slate-600"><?php echo $vehicle["price"] ?></td>
+                            <td class=" px-4 py-2 border border-slate-600"><?php echo $vehicle["type"] ?></td>
+                            <td class=" px-4 py-2 border border-slate-600"><?php echo $vehicle["class"] ?></td>
+                            <td class=" px-4 py-2 border border-slate-600"><?php echo $vehicle["make"] ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else : ?>
                     <tr>
-                        <td class="px-4 py-2 border border-slate-600"><?php echo $vehicle["year"] ?></td>
-                        <td class=" px-4 py-2 border border border-slate-600"><?php echo $vehicle["model"] ?></td>
-                        <td class="px-4 py-2 border border-slate-600"><?php echo $vehicle["price"] ?></td>
-                        <td class=" px-4 py-2 border border-slate-600"><?php echo $vehicle["type"] ?></td>
-                        <td class=" px-4 py-2 border border-slate-600"><?php echo $vehicle["class"] ?></td>
-                        <td class=" px-4 py-2 border border-slate-600"><?php echo $vehicle["make"] ?></td>
-                    <tr>
-                    <?php } ?>
+                        <td colspan="4">No vehicles exist for this filter yet.</td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
         </table>
     </section>
