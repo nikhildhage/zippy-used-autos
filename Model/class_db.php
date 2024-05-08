@@ -34,4 +34,10 @@ function delete_class($class_id)
 
 function add_class()
 {
+    global $db;
+    $query = "INSERT INTO class (class) VALUES (:class)";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':class', $class);
+    $statement->execute();
+    $statement->closeCursor();
 }
