@@ -10,7 +10,7 @@ function get_classes()
     return $results;
 }
 
-function get_className($class_id)
+function get_classname($class_id)
 {
     global $db;
     $query = "SELECT class FROM class WHERE id = :class_id";
