@@ -34,4 +34,10 @@ function delete_type()
 
 function add_type()
 {
+    global $db;
+    $query = "INSERT INTO type (type) VALUES (:type)";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':type', $type);
+    $statement->execute();
+    $statement->closeCursor();
 }
