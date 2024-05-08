@@ -1,6 +1,5 @@
 <?php
 include("./View/header.php");
-
 $makes = get_makes();
 $types = get_types();
 $classes = get_classes();
@@ -19,7 +18,6 @@ $classes = get_classes();
         </form>
 
         <!-- Form for filtering by Make, Type, and Class -->
-        <!-- Ensure that the current sorting order is passed along with the filter request -->
         <form action="index.php" method="GET" class="flex flex-row space-x-3 mb-4">
             <input type="hidden" name="sort_order" value="<?= $sort_order ?>">
             <div>
@@ -70,7 +68,9 @@ $classes = get_classes();
                 <?php if (!empty($vehicles)) : ?>
                     <?php foreach ($vehicles as $vehicle) : ?>
                         <tr>
-                            <td class="px-4 py-2 border border-slate-600"><?= htmlspecialchars($vehicle["year"]) ?></td>
+                            <td class="px-4 py-2 border border-s
+
+late-600"><?= htmlspecialchars($vehicle["year"]) ?></td>
                             <td class="px-4 py-2 border border-slate-600"><?= htmlspecialchars($vehicle["model"]) ?></td>
                             <td class="px-4 py-2 border border-slate-600"><?= htmlspecialchars($vehicle["price"]) ?></td>
                             <td class="px-4 py-2 border border-slate-600"><?= htmlspecialchars($vehicle["type"]) ?></td>
@@ -91,3 +91,4 @@ $classes = get_classes();
 <?php
 include("./View/footer.php");
 ?>
+
