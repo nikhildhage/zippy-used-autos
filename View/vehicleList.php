@@ -4,11 +4,11 @@ include("./View/header.php");
 <main>
     <section id="dropdown-group" class="flex flex-col text-nowrap text-xl">
         <!-- Form for sorting -->
-        <form action="index.php" method="GET" class="flex flex-row space-x-3 mb-4">
+        <form action="index.php" method="POST" class="flex flex-row space-x-3 mb-4">
             <label for="sortBy" class="block mb-3 mt-2">Sort By:</label>
             <select id="sortBy" name="sort_order" class="block w-48 mb-3 mt-2 py-1 px-3 border border-gray-300 bg-white rounded shadow focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                <option value="price_desc">Price High to Low</option>
-                <option value="year_desc">Year New to Old</option>
+                <option value="price_desc" <?= ($sort_order == 'price_desc' ? 'selected' : '') ?>>Price High to Low</option>
+                <option value="year_desc" <?= ($sort_order == 'year_desc' ? 'selected' : '') ?>>Year New to Old</option>
             </select>
             <button class="bg-blue-300 rounded-lg drop-shadow-lg mt-3 mb-3 py-1 px-3" type="submit">Sort</button>
         </form>
