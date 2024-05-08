@@ -19,12 +19,14 @@ function get_vehicles($sort_order)
 }
 
 //Get a lst of vehicles that with a specific type 
-function get_vehicles_by_type($type_id, $sort_order)
-{
+function get_vehicles_by_type($type_id, $sort_order) {
     global $db;
     $orderBy = $sort_order == 'year_desc' ? 'v.year DESC' : 'v.price DESC';
-    $query = "SELECT v.year, v.model, v.price, t.type, c.class, m.make FROM vehicles v
-              LEFT JOIN type t ON v.type_id = t.id
+    $query = "SELECT v.year, v.model, v.price, t.type, c.class, m.make 
+              FROM vehicles v
+              LEFT JOIN type t ON v.type_id = t.id  
+              LEFT JOIN class c ON v.class_id = c.id 
+              LEFT JOIN make m ON v.make_id = m.id
               WHERE t.id = :type_id
               ORDER BY $orderBy";
     $statement = $db->prepare($query);
@@ -35,13 +37,17 @@ function get_vehicles_by_type($type_id, $sort_order)
     return $results;
 }
 
+
 //Get a lst of vehicles that with a specific class 
 function get_vehicles_by_class($class_id, $sort_order)
 {
     global $db;
     $orderBy = $sort_order == 'year_desc' ? 'v.year DESC' : 'v.price DESC';
-    $query = "SELECT v.year, v.model, v.price, t.type, c.class, m.make FROM vehicles v
-              LEFT JOIN class c ON v.class_id = c.id
+    $query = "SELECT v.year, v.model, v.price, t.type, c.class, m.make
+              FROM vehicles v
+              LEFT JOIN type t ON v.type_id = t.id  
+              LEFT JOIN class c ON v.class_id = c.id 
+              LEFT JOIN make m ON v.make_id = m.id
               WHERE c.id = :class_id
               ORDER BY $orderBy";
     $statement = $db->prepare($query);
@@ -57,7 +63,10 @@ function get_vehicles_by_make($make_id, $sort_order)
 {
     global $db;
     $orderBy = $sort_order == 'year_desc' ? 'v.year DESC' : 'v.price DESC';
-    $query = "SELECT v.year, v.model, v.price, t.type, c.class, m.make FROM vehicles v
+    $query = "SELECT v.year, v.model, v.price, t.type, c.class, m.make
+              FROM vehicles v
+              LEFT JOIN type t ON v.type_id = t.id  
+              LEFT JOIN class c ON v.class_id = c.id 
               LEFT JOIN make m ON v.make_id = m.id
               WHERE m.id = :make_id
               ORDER BY $orderBy";

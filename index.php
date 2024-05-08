@@ -13,9 +13,9 @@ $type_id = filter_input(INPUT_POST, 'type_id', FILTER_VALIDATE_INT) ?: filter_in
 $class_id = filter_input(INPUT_POST, 'class_id', FILTER_VALIDATE_INT) ?: filter_input(INPUT_GET, 'class_id', FILTER_VALIDATE_INT);
 
 $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING) ?: filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING) ?: 'list_vehicles';
+
 switch ($action) {
     case "list_vehicles":
-        // Handling different sorting and filtering conditions
         if ($make_id) {
             $vehicles = get_vehicles_by_make($make_id, $sort_order);
         } elseif ($type_id) {
@@ -23,12 +23,11 @@ switch ($action) {
         } elseif ($class_id) {
             $vehicles = get_vehicles_by_class($class_id, $sort_order);
         } else {
-            $vehicles = get_vehicles($sort_order); // Get all vehicles with sorting
+            $vehicles = get_vehicles($sort_order);
         }
         include('View/vehicleList.php');
         break;
     default:
-        // Redirect to a default action or handle other actions
         $vehicles = get_vehicles($sort_order);
         include('View/vehicleList.php');
 }
