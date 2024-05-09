@@ -6,7 +6,7 @@ function get_vehicles($sort_order)
     // Fetch all items from the database to display
     global $db;
     $orderBy = $sort_order == 'year_desc' ? 'v.year DESC' : 'v.price DESC';
-    $query = "SELECT v.year, v.model, v.price, t.type, c.class, m.make from vehicles v
+    $query = "SELECT v.id, v.year, v.model, v.price, t.type, c.class, m.make from vehicles v
                 LEFT JOIN type t ON v.type_id = t.id  
                 LEFT JOIN class c ON v.class_id = c.id 
                 LEFT JOIN make m  ON v.make_id = m.id
@@ -22,7 +22,7 @@ function get_vehicles($sort_order)
 function get_vehicles_by_type($type_id, $sort_order) {
     global $db;
     $orderBy = $sort_order == 'year_desc' ? 'v.year DESC' : 'v.price DESC';
-    $query = "SELECT v.year, v.model, v.price, t.type, c.class, m.make 
+    $query = "SELECT v.id, v.year, v.model, v.price, t.type, c.class, m.make 
               FROM vehicles v
               LEFT JOIN type t ON v.type_id = t.id  
               LEFT JOIN class c ON v.class_id = c.id 
@@ -43,7 +43,7 @@ function get_vehicles_by_class($class_id, $sort_order)
 {
     global $db;
     $orderBy = $sort_order == 'year_desc' ? 'v.year DESC' : 'v.price DESC';
-    $query = "SELECT v.year, v.model, v.price, t.type, c.class, m.make
+    $query = "SELECT v.id, v.year, v.model, v.price, t.type, c.class, m.make
               FROM vehicles v
               LEFT JOIN type t ON v.type_id = t.id  
               LEFT JOIN class c ON v.class_id = c.id 
@@ -63,7 +63,7 @@ function get_vehicles_by_make($make_id, $sort_order)
 {
     global $db;
     $orderBy = $sort_order == 'year_desc' ? 'v.year DESC' : 'v.price DESC';
-    $query = "SELECT v.year, v.model, v.price, t.type, c.class, m.make
+    $query = "SELECT v.id, v.year, v.model, v.price, t.type, c.class, m.make
               FROM vehicles v
               LEFT JOIN type t ON v.type_id = t.id  
               LEFT JOIN class c ON v.class_id = c.id 
@@ -89,7 +89,7 @@ function delete_vehicle($id)
 }
 
 
-function add_vehicle()
+function add_vehicle($year, $model, $price, $type_id, $class_id, $make_id)
 {
     global $db;
     $query = "INSERT INTO vehicles (year, model, price, type_id, class_id, make_id) VALUES (:year, :model, :price, :type_id, :class_id, :make_id)";

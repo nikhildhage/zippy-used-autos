@@ -32,7 +32,7 @@ function delete_class($class_id)
     $statement->closeCursor();
 }
 
-function add_class()
+function add_class($class)
 {
     global $db;
     $query = "INSERT INTO class (class) VALUES (:class)";

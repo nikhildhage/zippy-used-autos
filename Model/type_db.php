@@ -32,7 +32,7 @@ function delete_type($type_id)
     $statement->closeCursor();
 }
 
-function add_type()
+function add_type($type)
 {
     global $db;
     $query = "INSERT INTO type (type) VALUES (:type)";
