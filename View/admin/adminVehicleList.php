@@ -93,15 +93,18 @@ $classes = get_classes();
     </section>
 </main>
 
-<footer>
-    <!-- Link to View/Edit Courses Page -->
-    <p><a class="text-blue-500 underline" href="admin_controller.php?action=list_types">Click Here to view Vehicle Type List</a></p>
+<footer class="w-full text-center border-t border-grey p-4 pin-b">
+    <!-- Link to Add Vehicles Page -->
+    <p><a class="text-blue-500 underline" href="../admin/admin_controller.php?action=add_vehicle">Click Here to add a Vehicle</a></p>
 
-    <!-- Link to View/Edit Courses Page -->
-    <p><a class="text-blue-500 underline" href="admin_controller.php?action=list_classes">Click Here to view Vehicle Class List</a></p>
+    <!-- Link to View/Edit Type Page -->
+    <p><a class="text-blue-500 underline" href="./controllers/types.php?action=list_types">Click Here to view Vehicle Type List</a></p>
 
-    <!-- Link to View/Edit Courses Page -->
-    <p><a class="text-blue-500 underline" href="admin_controller.php?action=list_makes">Click Here to view Vehicle Make List</a></p>
+    <!-- Link to View/Edit Class Page -->
+    <p><a class="text-blue-500 underline" href="./controllers/classes.php?action=list_classes">Click Here to view Vehicle Class List</a></p>
+
+    <!-- Link to View/Edit Make Page -->
+    <p><a class="text-blue-500 underline" href="./controllers/makes.php?action=list_makes">Click Here to view Vehicle Make List</a></p>
 </footer>
 
 <?php

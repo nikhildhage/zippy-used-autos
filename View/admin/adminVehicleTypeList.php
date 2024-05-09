@@ -1,5 +1,5 @@
 <?php
-include("../header.php");
+include("../../header.php");
 ?>
 <main>
 
@@ -39,14 +39,19 @@ include("../header.php");
     <button class="bg-blue-300 rounded-lg drop-shadow-lg mt-3 mb-3 py-1 px-3" type="submit">Submit</button>
 </form>
 
-<footer>
-    <p><a class=" text-blue-500 underline" href="">view Full Vehicle List</a></p>
-    <!-- Link to View/Edit Admin Vehicle Class Page -->
-    <p><a class="text-blue-500 underline" href="?action=list_classes"> Click Here to view Vehicle Class List></a></p>
+<footer class="w-full text-center border-t border-grey p-4 pin-b">
+    <!-- Link to View/Edit Vehicles Page -->
+    <p><a class="text-blue-500 underline" href="../admin_controller.php?action=list_vehicle">Click Here to view Vehicle List</a></p>
 
-    <!-- Link to View/Edit Admin Vehicle Make Page -->
-    </p><a class="text-blue-500 underline" href="?action=list_makes">Click Here to view Vehicle Make List</a></p>
+    <!-- Link to Add Vehicles Page -->
+    <p><a class="text-blue-500 underline" href="../admin_controller.php?action=add_vehicle">Click Here to add a Vehicle</a></p>
+
+    <!-- Link to View/Edit Class Page -->
+    <p><a class="text-blue-500 underline" href="../controllers/classes.php?action=list_classes">Click Here to view Vehicle Class List</a></p>
+
+    <!-- Link to View/Edit Make Page -->
+    <p><a class="text-blue-500 underline" href="../controllers/makes.php?action=list_makes">Click Here to view Vehicle Make List</a></p>
 </footer>
 <?php
-include("../footer.php");
+include("../../footer.php");
 ?>
