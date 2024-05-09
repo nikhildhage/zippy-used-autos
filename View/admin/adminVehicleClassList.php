@@ -32,7 +32,7 @@ include("../../header.php");
     <p class="font-bold text-orange-400 text-xl text-left text-nowrap my-4">Add Vehicle Classes</p>
     <form action="classes.php" method="POST">
         <input type="hidden" name="action" value="add_class">
-        <input type="text" name="class_name" placeholder="Class Name" class="block w-48 mb-3 mt-2 py-1 px-3 border border-gray-300 bg-white rounded shadow focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+        <input type="text" name="class_name" placeholder="Class Name" required class="block w-48 mb-3 mt-2 py-1 px-3 border border-gray-300 bg-white rounded shadow focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
         <button class="bg-blue-300 rounded-lg drop-shadow-lg py-1 px-3" type="submit">Submit</button>
     </form>
 </main>
@@ -42,7 +42,7 @@ include("../../header.php");
     <p><a class="text-blue-500 underline" href="../admin_controller.php?action=list_vehicle">Click Here to view Vehicle List</a></p>
 
     <!-- Link to Add Vehicles Page -->
-    <p><a class="text-blue-500 underline" href="../admin_controller.php?action=add_vehicle">Click Here to add a Vehicle</a></p>
+    <p><a class="text-blue-500 underline" href="../admin_controller.php?action=show_add_form">Click Here to add a Vehicle</a></p>
 
     <!-- Link to View/Edit Type Page -->
     <p><a class="text-blue-500 underline" href="../controllers/types.php?action=list_types">Click Here to view Vehicle Type List</a></p>

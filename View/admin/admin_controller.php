@@ -6,6 +6,9 @@ require_once('../../Model/class_db.php');
 require_once('../../Model/make_db.php');
 
 $vehicle_id = filter_input(INPUT_POST, 'vehicle_id', FILTER_VALIDATE_INT);
+$year = filter_input(INPUT_POST, 'year', FILTER_SANITIZE_NUMBER_INT);
+$model = filter_input(INPUT_POST, 'model', FILTER_SANITIZE_STRING);
+$price = filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 $sort_order = filter_input(INPUT_POST, 'sort_order', FILTER_SANITIZE_STRING) ?: filter_input(INPUT_GET, 'sort_order', FILTER_SANITIZE_STRING) ?: 'price_desc';
 $make_id = filter_input(INPUT_POST, 'make_id', FILTER_VALIDATE_INT) ?: filter_input(INPUT_GET, 'make_id', FILTER_VALIDATE_INT);
 $type_id = filter_input(INPUT_POST, 'type_id', FILTER_VALIDATE_INT) ?: filter_input(INPUT_GET, 'type_id', FILTER_VALIDATE_INT);
@@ -35,19 +38,36 @@ switch ($action) {
                 exit();
             } catch (PDOException $e) {
                 $error_message = "Error deleting vehicle. Details: " . $e->getMessage();
-                include('view/error.php');
+                include('../../view/error.php');
                 exit();
             }
         } else {
             $error_message = "Missing or incorrect vehicle ID.";
-            include('view/error.php');
+            include('../../view/error.php');
             exit();
         }
         break;
 
     case "add_vehicle":
-        // Assuming add_vehicle logic goes here
-        include('adminAddVehicle.php');
+        if ($year && $model && $price && $make_id && $type_id && $class_id) {
+            try {
+                add_vehicle($year, $model, $price, $type_id, $class_id, $make_id);
+                header("Location: admin_controller.php?action=list_vehicles");
+                exit();
+            } catch (PDOException $e) {
+                $error_message = "Error adding vehicle: " . $e->getMessage();
+                include('../../view/error.php');
+                exit();
+            }
+        } else {
+            $error_message = "All fields are required.";
+            include('../../view/error.php');
+            exit();
+        }
+        break;
+
+    case "show_add_form":
+        include('./adminAddVehicle.php');
         break;
 
     default:

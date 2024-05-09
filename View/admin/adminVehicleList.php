@@ -95,7 +95,7 @@ $classes = get_classes();
 
 <footer class="w-full text-center border-t border-grey p-4 pin-b">
     <!-- Link to Add Vehicles Page -->
-    <p><a class="text-blue-500 underline" href="../admin/admin_controller.php?action=add_vehicle">Click Here to add a Vehicle</a></p>
+    <p><a class="text-blue-500 underline" href="../admin/admin_controller.php?action=show_add_form">Click Here to add a Vehicle</a></p>
 
     <!-- Link to View/Edit Type Page -->
     <p><a class="text-blue-500 underline" href="./controllers/types.php?action=list_types">Click Here to view Vehicle Type List</a></p>
