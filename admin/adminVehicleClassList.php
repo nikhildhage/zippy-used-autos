@@ -1,5 +1,5 @@
 <?php
-include("../../header.php");
+include("../../View/header.php");
 ?>
 <main>
     <p class="font-bold text-orange-400 text-xl text-left text-nowrap my-4">Vehicle Class List</p>
@@ -51,5 +51,5 @@ include("../../header.php");
     <p><a class="text-blue-500 underline" href="../controllers/makes.php?action=list_makes">Click Here to view Vehicle Make List</a></p>
 </footer>
 <?php
-include("../../footer.php");
+include("../../View/footer.php");
 ?>

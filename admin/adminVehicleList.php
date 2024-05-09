@@ -1,5 +1,5 @@
 <?php
-include("../header.php");
+include("../View/header.php");
 
 $makes = get_makes();
 $types = get_types();
@@ -108,5 +108,5 @@ $classes = get_classes();
 </footer>
 
 <?php
-include("../footer.php");
+include("../View/footer.php");
 ?>

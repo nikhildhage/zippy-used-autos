@@ -1,6 +1,6 @@
 <?php
-require_once("../../../Model/database.php");
-require_once('../../../Model/type_db.php');
+require_once("../../Model/database.php");
+require_once('../../Model/type_db.php');
 
 $type_name = filter_input(INPUT_POST, 'type_name', FILTER_SANITIZE_STRING) ?: filter_input(INPUT_GET, 'type_name', FILTER_SANITIZE_STRING);
 $type_id = filter_input(INPUT_POST, 'type_id', FILTER_VALIDATE_INT) ?: filter_input(INPUT_GET, 'type_id', FILTER_VALIDATE_INT);
@@ -19,7 +19,7 @@ switch ($action) {
             exit();
         } else {
             $error_message = "Invalid type name. Please check the field and try again.";
-            include('../../../view/error.php');
+            include('../../view/error.php');
             exit();
         }
         break;
@@ -32,12 +32,12 @@ switch ($action) {
                 exit();
             } catch (PDOException $e) {
                 $error_message = "Cannot delete this type because it is currently assigned to one or more vehicles.";
-                include('../../../view/error.php');
+                include('../../view/error.php');
                 exit();
             }
         } else {
             $error_message = "Missing or incorrect type ID.";
-            include('../../../view/error.php');
+            include('../../view/error.php');
             exit();
         }
         break;

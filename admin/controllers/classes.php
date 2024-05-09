@@ -1,6 +1,6 @@
 <?php
-require_once("../../../Model/database.php");
-require_once('../../../Model/class_db.php');
+require_once("../../Model/database.php");
+require_once('../../Model/class_db.php');
 
 $class_name = filter_input(INPUT_POST, 'class_name', FILTER_SANITIZE_STRING) ?: filter_input(INPUT_GET, 'class_name', FILTER_SANITIZE_STRING);
 $class_id = filter_input(INPUT_POST, 'class_id', FILTER_VALIDATE_INT) ?: filter_input(INPUT_GET, 'class_id', FILTER_VALIDATE_INT);
@@ -19,7 +19,7 @@ switch ($action) {
             exit();
         } else {
             $error_message = "Invalid class name. Please check the field and try again.";
-            include('../../../view/error.php');
+            include('../../view/error.php');
             exit();
         }
         break;
@@ -32,12 +32,12 @@ switch ($action) {
                 exit();
             } catch (PDOException $e) {
                 $error_message = "Cannot delete this class because it is currently assigned to one or more vehicles.";
-                include('../../../view/error.php');
+                include('../../view/error.php');
                 exit();
             }
         } else {
             $error_message = "Missing or incorrect class ID.";
-            include('../../../view/error.php');
+            include('../../view/error.php');
             exit();
         }
         break;

@@ -1,8 +1,5 @@
 <?php
-include("../header.php");
-require_once('../../Model/make_db.php');
-require_once('../../Model/type_db.php');
-require_once('../../Model/class_db.php');
+include("../View/header.php");
 
 $makes = get_makes();
 $types = get_types();
@@ -82,5 +79,5 @@ $classes = get_classes();
 </footer>
 
 <?php
-include("../footer.php");
+include("../View/footer.php");
 ?>

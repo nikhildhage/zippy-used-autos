@@ -1,9 +1,9 @@
 <?php
-require_once("../../Model/database.php");
-require_once('../../Model/vehicles_db.php');
-require_once('../../Model/type_db.php');
-require_once('../../Model/class_db.php');
-require_once('../../Model/make_db.php');
+require_once("../Model/database.php");
+require_once('../Model/vehicles_db.php');
+require_once('../Model/type_db.php');
+require_once('../Model/class_db.php');
+require_once('../Model/make_db.php');
 
 $vehicle_id = filter_input(INPUT_POST, 'vehicle_id', FILTER_VALIDATE_INT);
 $year = filter_input(INPUT_POST, 'year', FILTER_SANITIZE_NUMBER_INT);
