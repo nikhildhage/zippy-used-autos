@@ -1,15 +1,15 @@
 <?php
-require_once("../../Model/database.php");
-require_once('../../Model/type_db.php');
+require_once("../../../Model/database.php");
+require_once('../../../Model/type_db.php');
 
-$type_name = filter_input(INPUT_POST, 'type_name', FILTER_SANITIZE_STRING);
-$type_id = filter_input(INPUT_POST, 'type_id', FILTER_VALIDATE_INT);
+$type_name = filter_input(INPUT_POST, 'type_name', FILTER_SANITIZE_STRING) ?: filter_input(INPUT_GET, 'type_name', FILTER_SANITIZE_STRING);
+$type_id = filter_input(INPUT_POST, 'type_id', FILTER_VALIDATE_INT) ?: filter_input(INPUT_GET, 'type_id', FILTER_VALIDATE_INT);
 
 $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING) ?: filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING) ?: 'list_types';
 switch ($action) {
     case "list_types":
         $types = get_types();
-        include('adminVehicleTypeList.php');
+        include('../adminVehicleTypeList.php');
         break;
 
     case "add_type":
@@ -38,7 +38,7 @@ switch ($action) {
 
     default:
         $types = get_types();
-        include('adminVehicleTypeList.php');
+        include('../adminVehicleTypeList.php');
 }
 
 ?>
