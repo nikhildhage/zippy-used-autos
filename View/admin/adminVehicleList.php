@@ -67,20 +67,21 @@ $classes = get_classes();
             <tbody class="bg-orange-300">
                 <?php if (!empty($vehicles)) : ?>
                     <?php foreach ($vehicles as $vehicle) : ?>
-                        <tr>
-                            <td class="px-4 py-2 border border-slate-600"><?= htmlspecialchars($vehicle["year"]) ?></td>
-                            <td class="px-4 py-2 border border-slate-600"><?= htmlspecialchars($vehicle["model"]) ?></td>
-                            <td class="px-4 py-2 border border-slate-600"><?= htmlspecialchars($vehicle["price"]) ?></td>
-                            <td class="px-4 py-2 border border-slate-600"><?= htmlspecialchars($vehicle["type"]) ?></td>
-                            <td class="px-4 py-2 border border-slate-600"><?= htmlspecialchars($vehicle["class"]) ?></td>
-                            <td class="px-4 py-2 border border-slate-600"><?= htmlspecialchars($vehicle["make"]) ?></td>
-                            <td class="px-4 py-2 border border-slate-600">
-                                <form action="admin_controller.php" method="POST">
-                                    <input type="hidden" name="action" value="delete_vehicle">
-                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="px-4 py-2 border border-slate-600"><?= htmlspecialchars($vehicle["year"]) ?></td>
+                        <td class="px-4 py-2 border border-slate-600"><?= htmlspecialchars($vehicle["model"]) ?></td>
+                        <td class="px-4 py-2 border border-slate-600"><?= htmlspecialchars($vehicle["price"]) ?></td>
+                        <td class="px-4 py-2 border border-slate-600"><?= htmlspecialchars($vehicle["type"]) ?></td>
+                        <td class="px-4 py-2 border border-slate-600"><?= htmlspecialchars($vehicle["class"]) ?></td>
+                        <td class="px-4 py-2 border border-slate-600"><?= htmlspecialchars($vehicle["make"]) ?></td>
+                        <td class="px-4 py-2 border border-slate-600">
+                            <form action="admin_controller.php" method="POST">
+                                <input type="hidden" name="vehicle_id" value="<?= $vehicle['id'] ?>"> 
+                                <input type="hidden" name="action" value="delete_vehicle">
+                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
                     <?php endforeach; ?>
                 <?php else : ?>
                     <tr>
