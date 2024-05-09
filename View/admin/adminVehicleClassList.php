@@ -3,6 +3,8 @@ include("../../header.php");
 ?>
 <main>
     <p class="font-bold text-orange-400 text-xl text-left text-nowrap my-4">Vehicle Class List</p>
+
+    <!-- Responsive table -->
     <section id="customer-vehicle-table" class="text-nowrap overflow-auto scrollbar-thumb-gray-400 scrollbar-track-gray-300">
         <table class="table-auto w-3/12 border-collapse border border-slate-600">
             <thead>
