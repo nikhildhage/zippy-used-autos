@@ -19,19 +19,25 @@ switch ($action) {
             exit();
         } else {
             $error_message = "Invalid make name. Please check the field and try again.";
-            include('view/error.php');
+            include('../../../view/error.php');
             exit();
         }
         break;
 
     case "delete_make":
         if ($make_id) {
-            delete_make($make_id);
-            header("Location: makes.php?action=list_makes");
-            exit();
+            try {
+                delete_make($make_id);
+                header("Location: makes.php?action=list_makes");
+                exit();
+            } catch (PDOException $e) {
+                $error_message = "Cannot delete this make because it is currently assigned to one or more vehicles.";
+                include('../../../view/error.php');
+                exit();
+            }
         } else {
             $error_message = "Missing or incorrect make ID.";
-            include('view/error.php');
+            include('../../../view/error.php');
             exit();
         }
         break;

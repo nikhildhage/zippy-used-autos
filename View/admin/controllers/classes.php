@@ -19,19 +19,25 @@ switch ($action) {
             exit();
         } else {
             $error_message = "Invalid class name. Please check the field and try again.";
-            include('view/error.php');
+            include('../../../view/error.php');
             exit();
         }
         break;
 
     case "delete_class":
         if ($class_id) {
-            delete_class($class_id);
-            header("Location: classes.php?action=list_classes");
-            exit();
+            try {
+                delete_class($class_id);
+                header("Location: classes.php?action=list_classes");
+                exit();
+            } catch (PDOException $e) {
+                $error_message = "Cannot delete this class because it is currently assigned to one or more vehicles.";
+                include('../../../view/error.php');
+                exit();
+            }
         } else {
             $error_message = "Missing or incorrect class ID.";
-            include('view/error.php');
+            include('../../../view/error.php');
             exit();
         }
         break;

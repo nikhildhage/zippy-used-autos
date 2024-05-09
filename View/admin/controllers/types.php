@@ -19,19 +19,25 @@ switch ($action) {
             exit();
         } else {
             $error_message = "Invalid type name. Please check the field and try again.";
-            include('view/error.php');
+            include('../../../view/error.php');
             exit();
         }
         break;
 
     case "delete_type":
         if ($type_id) {
-            delete_type($type_id);
-            header("Location: types.php?action=list_types");
-            exit();
+            try {
+                delete_type($type_id);
+                header("Location: types.php?action=list_types");
+                exit();
+            } catch (PDOException $e) {
+                $error_message = "Cannot delete this type because it is currently assigned to one or more vehicles.";
+                include('../../../view/error.php');
+                exit();
+            }
         } else {
             $error_message = "Missing or incorrect type ID.";
-            include('view/error.php');
+            include('../../../view/error.php');
             exit();
         }
         break;
