@@ -27,13 +27,25 @@ switch ($action) {
         }
         include('./adminVehicleList.php');
         break;
+
     case "delete_vehicle":
         if ($vehicle_id) {
-            delete_vehicle($vehicle_id);
+            try {
+                delete_vehicle($vehicle_id);
+                header("Location: admin_controller.php?action=list_vehicles");
+                exit();
+            } catch (PDOException $e) {
+                $error_message = "Error deleting vehicle. Details: " . $e->getMessage();
+                include('view/error.php');
+                exit();
+            }
+        } else {
+            $error_message = "Missing or incorrect vehicle ID.";
+            include('view/error.php');
+            exit();
         }
-        
-        header("Location: admin_controller.php?action=list_vehicles");
         break;
+
     default:
         $vehicles = get_vehicles($sort_order);
         include('./adminVehicleList.php');
