@@ -12,7 +12,8 @@ $make_id = filter_input(INPUT_POST, 'make_id', FILTER_VALIDATE_INT) ?: filter_in
 $type_id = filter_input(INPUT_POST, 'type_id', FILTER_VALIDATE_INT) ?: filter_input(INPUT_GET, 'type_id', FILTER_VALIDATE_INT);
 $class_id = filter_input(INPUT_POST, 'class_id', FILTER_VALIDATE_INT) ?: filter_input(INPUT_GET, 'class_id', FILTER_VALIDATE_INT);
 
-$action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING) ?: filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING) ?: 'list_vehicles';
+$action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING) ?: filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
+
 switch ($action) {
     case "list_vehicles":
         if ($make_id) {
@@ -26,8 +27,16 @@ switch ($action) {
         }
         include('./adminVehicleList.php');
         break;
+    case "delete_vehicle":
+        if ($vehicle_id) {
+            delete_vehicle($vehicle_id);
+        }
+        
+        header("Location: admin_controller.php?action=list_vehicles");
+        break;
     default:
         $vehicles = get_vehicles($sort_order);
         include('./adminVehicleList.php');
 }
 ?>
+
