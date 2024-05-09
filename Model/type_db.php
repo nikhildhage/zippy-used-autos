@@ -22,7 +22,7 @@ function get_typename($type_id)
     return $result['type'];
 }
 
-function delete_type()
+function delete_type($type_id)
 {
     global $db;
     $query = "DELETE FROM type WHERE id = :type_id";

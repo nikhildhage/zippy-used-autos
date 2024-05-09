@@ -2,7 +2,7 @@
 function get_makes()
 {
     global $db;
-    $query = "SELECT * from make m";
+    $query = "SELECT * from make";
     $statement = $db->prepare($query);
     $statement->execute();
     $results = $statement->fetchAll();
@@ -37,4 +37,10 @@ function delete_make($make_id)
 
 function add_make()
 {
+    global $db;
+    $query = "INSERT INTO type (make) VALUES (:make)";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':make', $make);
+    $statement->execute();
+    $statement->closeCursor();
 }
