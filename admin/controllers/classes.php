@@ -9,7 +9,7 @@ $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING) ?: filter_i
 switch ($action) {
     case "list_classes":
         $classes = get_classes();
-        include('../adminVehicleClassList.php');
+        include('../View/adminVehicleClassList.php');
         break;
 
     case "add_class":
@@ -44,6 +44,6 @@ switch ($action) {
 
     default:
         $classes = get_classes();
-        include('../adminVehicleClassList.php');
+        include('../View/adminVehicleClassList.php');
 }
 ?>

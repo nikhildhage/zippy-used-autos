@@ -27,7 +27,7 @@ switch ($action) {
         } else {
             $vehicles = get_vehicles($sort_order);
         }
-        include('./adminVehicleList.php');
+        include('./View/adminVehicleList.php');
         break;
 
     case "delete_vehicle":
@@ -67,12 +67,12 @@ switch ($action) {
         break;
 
     case "show_add_form":
-        include('./adminAddVehicle.php');
+        include('./View/adminAddVehicle.php');
         break;
 
     default:
         $vehicles = get_vehicles($sort_order);
-        include('./adminVehicleList.php');
+        include('./View/adminVehicleList.php');
 }
 ?>
 

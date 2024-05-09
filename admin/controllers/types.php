@@ -9,7 +9,7 @@ $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING) ?: filter_i
 switch ($action) {
     case "list_types":
         $types = get_types();
-        include('../adminVehicleTypeList.php');
+        include('../View/adminVehicleTypeList.php');
         break;
 
     case "add_type":
@@ -44,7 +44,7 @@ switch ($action) {
 
     default:
         $types = get_types();
-        include('../adminVehicleTypeList.php');
+        include('../View/adminVehicleTypeList.php');
 }
 
 ?>

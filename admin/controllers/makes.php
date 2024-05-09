@@ -9,7 +9,7 @@ $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING) ?: filter_i
 switch ($action) {
     case "list_makes":
         $makes = get_makes();
-        include('../adminVehicleMakeList.php');
+        include('../View/adminVehicleMakeList.php');
         break;
 
     case "add_make":
@@ -44,7 +44,7 @@ switch ($action) {
 
     default:
         $makes = get_makes();
-        include('../adminVehicleMakeList.php');
+        include('../View/adminVehicleMakeList.php');
 }
 
 ?>
