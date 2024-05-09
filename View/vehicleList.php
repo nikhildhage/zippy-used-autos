@@ -8,48 +8,45 @@ $classes = get_classes();
 
 <main>
     <section id="dropdown-group" class="flex flex-col text-nowrap text-xl">
-        <!-- Form for sorting -->
-        <form action="index.php" method="POST" class="flex flex-row space-x-3 mb-4">
-            <label for="sortBy" class="block mb-3 mt-2">Sort By:</label>
-            <select id="sortBy" name="sort_order" class="block w-48 mb-3 mt-2 py-1 px-3 border border-gray-300 bg-white rounded shadow focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                <option value="price_desc" <?= ($sort_order == 'price_desc' ? 'selected' : '') ?>>Price High to Low</option>
-                <option value="year_desc" <?= ($sort_order == 'year_desc' ? 'selected' : '') ?>>Year New to Old</option>
-            </select>
-            <button class="bg-blue-300 rounded-lg drop-shadow-lg mt-3 mb-3 py-1 px-3" type="submit">Sort</button>
-        </form>
-
-        <!-- Form for filtering by Make, Type, and Class -->
-        <!-- Ensure that the current sorting order is passed along with the filter request -->
-        <form action="index.php" method="GET" class="flex flex-row space-x-3 mb-4">
-            <input type="hidden" name="sort_order" value="<?= $sort_order ?>">
-            <div>
-                <label for="selectMake" class="block mb-2">Select Make:</label>
-                <select id="selectMake" name="make_id" class="block w-40 mb-3 py-1 px-3 border border-gray-300 bg-white rounded shadow focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                    <option value="">All Makes</option>
-                    <?php foreach ($makes as $make) : ?>
-                        <option value="<?= $make['id'] ?>"><?= htmlspecialchars($make['make']) ?></option>
-                    <?php endforeach; ?>
+        <!-- Combined Form for Sorting and Filtering -->
+        <form action="index.php" method="POST" class="flex flex-col space-y-4 mb-4">
+            <div class="flex flex-col">
+                <label for="sortBy" class="mb-2 font-bold">Sort by:</label>
+                <select id="sortBy" name="sort_order" class="mb-3 py-1 px-3 border border-gray-300 bg-white rounded shadow focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 w-full">
+                    <option value="price_desc" <?= ($sort_order == 'price_desc' ? 'selected' : '') ?>>Price High to Low</option>
+                    <option value="year_desc" <?= ($sort_order == 'year_desc' ? 'selected' : '') ?>>Year New to Old</option>
                 </select>
             </div>
-            <div>
-                <label for="selectType" class="block mb-2">Select Type:</label>
-                <select id="selectType" name="type_id" class="block w-40 mb-3 py-1 px-3 border border-gray-300 bg-white rounded shadow focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                    <option value="">All Types</option>
-                    <?php foreach ($types as $type) : ?>
-                        <option value="<?= $type['id'] ?>"><?= htmlspecialchars($type['type']) ?></option>
-                    <?php endforeach; ?>
-                </select>
+            <div class="flex flex-row space-x-4">
+                <div class="flex flex-col w-1/3">
+                    <label for="selectMake" class="mb-2">Select Make:</label>
+                    <select id="selectMake" name="make_id" class="py-1 px-3 border border-gray-300 bg-white rounded shadow focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="">All Makes</option>
+                        <?php foreach ($makes as $make) : ?>
+                            <option value="<?= $make['id'] ?>" <?= ($make_id == $make['id'] ? 'selected' : '') ?>><?= htmlspecialchars($make['make']) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="flex flex-col w-1/3">
+                    <label for="selectType" class="mb-2">Select Type:</label>
+                    <select id="selectType" name="type_id" class="py-1 px-3 border border-gray-300 bg-white rounded shadow focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="">All Types</option>
+                        <?php foreach ($types as $type) : ?>
+                            <option value="<?= $type['id'] ?>" <?= ($type_id == $type['id'] ? 'selected' : '') ?>><?= htmlspecialchars($type['type']) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="flex flex-col w-1/3">
+                    <label for="selectClass" class="mb-2">Select Class:</label>
+                    <select id="selectClass" name="class_id" class="py-1 px-3 border border-gray-300 bg-white rounded shadow focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="">All Classes</option>
+                        <?php foreach ($classes as $class) : ?>
+                            <option value="<?= $class['id'] ?>" <?= ($class_id == $class['id'] ? 'selected' : '') ?>><?= htmlspecialchars($class['class']) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
             </div>
-            <div>
-                <label for="selectClass" class="block mb-2">Select Class:</label>
-                <select id="selectClass" name="class_id" class="block w-40 mb-3 py-1 px-3 border border-gray-300 bg-white rounded shadow focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                    <option value="">All Classes</option>
-                    <?php foreach ($classes as $class) : ?>
-                        <option value="<?= $class['id'] ?>"><?= htmlspecialchars($class['class']) ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <button class="bg-blue-300 rounded-lg drop-shadow-lg mt-3 py-1 px-3" type="submit">Filter</button>
+            <button class="bg-blue-300 rounded-lg drop-shadow-lg mt-3 py-1 px-3" type="submit" name="action" value="list_vehicles">Apply</button>
         </form>
     </section>
 
@@ -91,3 +88,6 @@ $classes = get_classes();
 <?php
 include("./View/footer.php");
 ?>
+
+
+
