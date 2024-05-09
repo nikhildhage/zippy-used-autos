@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zippy-Used-Autos Assignment</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="./View/css/style.css">
+    <link rel="stylesheet" href="view/css/style.css">
 </head>
 
 <body class="flex flex-col justify-center items-center bg-slate-100 h-screen">
